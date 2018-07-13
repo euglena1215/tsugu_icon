@@ -6,10 +6,105 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="page-with-sidebar">
+  <div class="ff-sidebar-container">
+    <a id="sidebar-logo" class="sidebar-toggle">
+      <img id="logo-big" src="http://placehold.jp/150x50.png?text=ロゴ" />
+      <img id="logo-small" src="http://placehold.jp/50x50.png?text=ロゴ" />
+    </a>
+
+    <!-- 使い方 -->
+    <a class="sidebar-link" href="#">
+      <span>
+        <i class="fas fa-info-circle"></i>
+      </span>
+      <label>
+        <strong>
+          使い方
+        </strong>
+      </label>
+    </a>
+
+    <!-- カテゴリ -->
+    <details>
+      <summary>
+        <a class="sidebar-link">
+          <span>
+            <i class="fas fa-folder"></i>
+          </span>
+          <label>
+            <strong>
+              カテゴリ
+            </strong>
+          </label>
+        </a>
+      </summary>
+      <a class="sidebar-link" href="#">
+        <span>
+          <i class="fas fa-folder-open"></i>
+        </span>
+        <label>
+          <strong>
+            カテゴリA
+          </strong>
+        </label>
+      </a>
+      <a class="sidebar-link" href="#">
+        <span>
+          <i class="fas fa-folder-open"></i>
+        </span>
+        <label>
+          <strong>
+            カテゴリB
+          </strong>
+        </label>
+      </a>
+    </details>
+
+    <br>
+
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#女の子</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#ぼうし</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#夏</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#鳥</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#わさび</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#盧遮那仏</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#熱中症</a>
+    <a class="ff-pill size-small shape-curved bg-orange-80 text-white text-regular">#🐟</a>
+
+  </div>
+
+  <div class="ff-content-container">
     <%= yield %>
-  </body>
+  </div>
+</body>
+
+  <script>
+    //  Toggle sidebar  ===================================================
+    var wrapper = document.querySelector(".page-with-sidebar");
+    var toggler = document.querySelectorAll(".sidebar-toggle");
+
+    for (var i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener('click', function () {
+        wrapper.classList.toggle("collapsed");
+      });
+    }
+
+    var sidebarLinkIcons = document.querySelectorAll(".ff-sidebar-container .sidebar-link > span");
+    sidebarLinkIcons.forEach((elem) => {
+      elem.onmouseover = function (e) {
+        var top = this.getBoundingClientRect().top,
+          siblingLabel = elem.nextElementSibling;
+
+        top = top + 12;
+        siblingLabel.style.top = top + "px";
+      };
+    });
+  </script>
 </html>
