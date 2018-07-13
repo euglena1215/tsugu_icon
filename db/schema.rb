@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_160008) do
   enable_extension "plpgsql"
 
   create_table "icons", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
