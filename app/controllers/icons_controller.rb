@@ -47,7 +47,7 @@ class IconsController < ApplicationController
   # DELETE /icons/1.json
   def destroy
     @icon.destroy!
-    format.html { redirect_to icons_url, notice: 'Icon was successfully destroyed.' }
+    redirect_to icons_url, notice: 'Icon was successfully destroyed.'
   end
 
   private
